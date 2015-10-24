@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Magento/Backend/etc/menu.xsd">
+    <menu>
+        <add id="Diglin_Zopim::zopim" title="Zopim Chat by Diglin" module="Diglin_Zopim" sortOrder="60" parent="Magento_Backend::stores" resource="Diglin_Zopim::zopim"/>
+
+        <add id="Diglin_Zopim::account_setup" title="Account Setup" module="Diglin_Zopim" sortOrder="10" action="chat/account/setup" resource="Diglin_Zopim::account_setup" parent="Diglin_Zopim::zopim" />
+        <add id="Diglin_Zopim::config" title="Configuration" module="Diglin_Zopim" sortOrder="20" action="admin/system_config/edit/section/zopim" resource="Diglin_Zopim::config" parent="Diglin_Zopim::zopim" />
+    </menu>
+</config>

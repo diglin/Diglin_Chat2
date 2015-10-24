@@ -1,0 +1,1 @@
+Module Diglin\Zopim implements integration with the Zopim Chat Widget.
