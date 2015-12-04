@@ -105,7 +105,7 @@
 
                 <field id="window_size" translate="label comment" type="select" sortOrder="50" showInDefault="1" showInStore="1" showInWebsite="1">
                     <label>Size</label>
-                    <source_model>Diglin\Zoppim\Model\Config\Source\Windowsize</source_model>
+                    <source_model>Diglin\Zopim\Model\Config\Source\Windowsize</source_model>
                     <comment><![CDATA[Set the size of the chat window. Allowed values: small, medium, large. <strong>ATTENTION</strong>: may not work correctly until Zopim fix his API.]]></comment>
                     <depends>
                         <field id="type_config">adv</field>
@@ -130,374 +130,230 @@
                         <field id="type_config">adv</field>
                     </depends>
                 </field>
-                
-                <!-- The API by Zopim doesn't work correctly (at the moment) -->
-                <!--<window_position>-->
-                <!--<label>Window position</label>-->
-                <!--<frontend_type>select</frontend_type>-->
-                <!--<source_model>chat/config_source_windowposition</source_model>-->
-                <!--<comment><![CDATA[Set position of the chat window. <strong>ATTENTION</strong>: may not work correctly until Zopim fix his API.]]></comment>-->
-                <!--<sort_order>55</sort_order>-->
-                <!--<show_in_default>1</show_in_default>-->
-                <!--<show_in_website>1</show_in_website>-->
-                <!--<show_in_store>1</show_in_store>-->
-                <!--<depends>-->
-                <!--<field id="type_config">adv</field>-->
-                <!--</depends>-->
-                <!--</window_position>-->
-                <!--<window_onshow>-->
-                <!--<label>On Show Callback</label>-->
-                <!--<frontend_type>text</frontend_type>-->
-                <!--<sort_order>60</sort_order>-->
-                <!--<comment>Javascript function name callback which will be fired when showing the window. Note: the callback will not be fired if the chat window was shown using an API call.</comment>-->
-                <!--<show_in_default>1</show_in_default>-->
-                <!--<show_in_website>1</show_in_website>-->
-                <!--<show_in_store>1</show_in_store>-->
-                <!--<depends>-->
-                <!--<field id="type_config">adv</field>-->
-                <!--</depends>-->
-                <!--</window_onshow>-->
-                <!--<window_onhide>-->
-                <!--<label>On Hide Callback</label>-->
-                <!--<frontend_type>text</frontend_type>-->
-                <!--<sort_order>65</sort_order>-->
-                <!--<comment>Javascript function name callback which will be fired when hiding the window. Note: the callback will not be fired if the chat window was hidden using an API call.</comment>-->
-                <!--<show_in_default>1</show_in_default>-->
-                <!--<show_in_website>1</show_in_website>-->
-                <!--<show_in_store>1</show_in_store>-->
-                <!--<depends>-->
-                <!--<field id="type_config">adv</field>-->
-                <!--</depends>-->
-                <!--</window_onhide>-->
 
                 <!-- Badge Config-->
 
-                <field id="badge_config" translate="label" type="text" >
+                <field id="badge_config" translate="label" type="text" sortOrder="70" showInDefault="1" showInStore="1" showInWebsite="1">
                     <label>Chat Badge</label>
-                    <frontend_model>chat/adminhtml_config_source_heading</frontend_model>
-                    <sort_order>70</sort_order>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
                     <depends>
                         <field id="window_theme">simple</field>
                         <field id="type_config">adv</field>
                     </depends>
                 </field>
-                
-                <button_hide_offline translate="label comment">
+
+                <field id="button_hide_offline" translate="label comment" type="select" sortOrder="80" showInDefault="1" showInStore="1" showInWebsite="1">
                     <label>Hide Chat button if Offline</label>
-                    <frontend_type>select</frontend_type>
-                    <source_model>adminhtml/system_config_source_yesno</source_model>
-                    <sort_order>71</sort_order>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                     <comment>Configure whether the chat button is displayed when the account is offline.</comment>
-                    <show_in_default>1</show_in_default>
-                    <show_in_website>1</show_in_website>
-                    <show_in_store>1</show_in_store>
                     <depends>
                         <field id="type_config">adv</field>
                     </depends>
-                </button_hide_offline>
-                <badge_show translate="label comment">
+                </field>
+                <field id="badge_show" translate="label comment" type="select" sortOrder="90" showInDefault="1" showInStore="1" showInWebsite="1">
                     <label>Show Badge</label>
-                    <frontend_type>select</frontend_type>
-                    <source_model>chat/config_source_showhide</source_model>
+                    <source_model>Diglin\Zopim\Model\Config\Source\Showhide</source_model>
                     <comment>Show or hide the badge when the widget is loaded.</comment>
-                    <sort_order>80</sort_order>
-                    <show_in_default>1</show_in_default>
-                    <show_in_website>1</show_in_website>
-                    <show_in_store>1</show_in_store>
                     <depends>
                         <field id="window_theme">simple</field>
                         <field id="type_config">adv</field>
-                        <button_hide_offline>0</button_hide_offline>
+                        <field id="button_hide_offline">0</field>
                     </depends>
-                </badge_show>
-                <badge_layout translate="label comment">
+                </field>
+                <field id="badge_layout" translate="label comment" type="select" sortOrder="100" showInDefault="1" showInStore="1" showInWebsite="1">
                     <label>Layout</label>
-                    <frontend_type>select</frontend_type>
-                    <source_model>chat/config_source_layout</source_model>
+                    <source_model>Diglin\Zopim\Model\Config\Source\Layout</source_model>
                     <comment>Image right (Image on right, text on left), Image left (Image on left, text on right), Image only, Text only</comment>
                     <tooltip><![CDATA[<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAWgAAABZCAIAAACc1ik+AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2hpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYxIDY0LjE0MDk0OSwgMjAxMC8xMi8wNy0xMDo1NzowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpGNzdGMTE3NDA3MjA2ODExOTdBNTg1QUY1NjIxQTI2NCIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo4NkYyQzQ2NjdGRDcxMUUzQjFCQTlGNDEyNTVDRjYyQiIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo4NkYyQzQ2NTdGRDcxMUUzQjFCQTlGNDEyNTVDRjYyQiIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1LjEgTWFjaW50b3NoIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6Rjc3RjExNzQwNzIwNjgxMTk3QTU4NUFGNTYyMUEyNjQiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6Rjc3RjExNzQwNzIwNjgxMTk3QTU4NUFGNTYyMUEyNjQiLz4gPC9yZGY6RGVzY3Jp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">
 ]]></tooltip>
-                    <sort_order>90</sort_order>
-                    <show_in_default>1</show_in_default>
-                    <show_in_website>1</show_in_website>
-                    <show_in_store>1</show_in_store>
                     <depends>
                         <field id="window_theme">simple</field>
                         <field id="type_config">adv</field>
                     </depends>
-                </badge_layout>
-                <theme_badge_color_primary translate="label">
+                </field>
+                <field id="theme_badge_color_primary" translate="label" type="select" sortOrder="110" showInDefault="1" showInStore="1" showInWebsite="1">
                     <label>Badge Color</label>
-                    <frontend_type>select</frontend_type>
-                    <source_model>chat/config_source_badgecolor</source_model>
-                    <sort_order>95</sort_order>
-                    <show_in_default>1</show_in_default>
-                    <show_in_website>1</show_in_website>
-                    <show_in_store>1</show_in_store>
+                    <source_model>Diglin\Zopim\Model\Config\Source\Badgecolor</source_model>
                     <depends>
                         <field id="window_theme">simple</field>
                         <field id="type_config">adv</field>
                     </depends>
-                </theme_badge_color_primary>
-                <theme_badge_color translate="label comment">
+                </field>
+                <field id="theme_badge_color" translate="label comment" type="text" sortOrder="120" showInDefault="1" showInStore="1" showInWebsite="1">
                     <label>Customized Badge Color</label>
-                    <frontend_type>text</frontend_type>
                     <validate>color</validate>
-                    <sort_order>96</sort_order>
                     <comment><![CDATA[Color in hexadecimal format ('AABBCC’)]]></comment>
-                    <show_in_default>1</show_in_default>
-                    <show_in_website>1</show_in_website>
-                    <show_in_store>1</show_in_store>
                     <depends>
                         <field id="window_theme">simple</field>
                         <field id="type_config">adv</field>
-                        <theme_badge_color_primary>badge_color_customized</theme_badge_color_primary>
+                        <field id="theme_badge_color_primary">badge_color_customized</field>
                     </depends>
-                </theme_badge_color>
-                <badge_image translate="label comment">
+                </field>
+                <field id="badge_image" translate="label comment" type="image" sortOrder="130" showInDefault="1" showInStore="1" showInWebsite="1">
                     <label>Image</label>
-                    <frontend_type>image</frontend_type>
-                    <backend_model>adminhtml/system_config_backend_image</backend_model>
+                    <backend_model>Magento\Config\Model\Config\Backend\Image</backend_model>
                     <upload_dir config="system/filesystem/media" scope_info="1">chat</upload_dir>
                     <base_url type="media" scope_info="1">chat</base_url>
-                    <sort_order>110</sort_order>
                     <comment>Recommended dimensions 240x164px. No effect if the badge layout is text only</comment>
-                    <show_in_default>1</show_in_default>
-                    <show_in_website>1</show_in_website>
-                    <show_in_store>1</show_in_store>
                     <depends>
                         <field id="window_theme">simple</field>
                         <field id="type_config">adv</field>
                     </depends>
-                </badge_image>
-                <badge_text translate="label comment">
+                </field>
+                <field id="badge_text" translate="label comment" type="text" sortOrder="140" showInDefault="1" showInStore="1" showInWebsite="1">
                     <label>Text</label>
-                    <frontend_type>text</frontend_type>
-                    <sort_order>120</sort_order>
                     <comment>No effect if the layout of the badge is Image Only</comment>
-                    <show_in_default>1</show_in_default>
-                    <show_in_website>1</show_in_website>
-                    <show_in_store>1</show_in_store>
                     <depends>
                         <field id="window_theme">simple</field>
                         <field id="type_config">adv</field>
                     </depends>
-                </badge_text>
+                </field>
 
                 <!-- Concierge Config -->
 
-                <concierge_config translate="label">
+                <field id="concierge_config" translate="label" sortOrder="150" showInDefault="1" showInStore="1" showInWebsite="1">
                     <label>Chat Concierge</label>
-                    <frontend_model>chat/adminhtml_config_source_heading</frontend_model>
-                    <sort_order>130</sort_order>
-                    <show_in_default>1</show_in_default>
-                    <show_in_website>1</show_in_website>
-                    <show_in_store>1</show_in_store>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
                     <depends>
                         <field id="window_theme">simple</field>
                         <field id="type_config">adv</field>
                     </depends>
-                </concierge_config>
-                <concierge_name translate="label comment">
+                </field>
+                <field id="concierge_name" translate="label comment" type="text" sortOrder="160" showInDefault="1" showInStore="1" showInWebsite="1">
                     <label>Display Title</label>
-                    <frontend_type>text</frontend_type>
-                    <sort_order>140</sort_order>
                     <comment>Customize this name to give the concierge a personality.</comment>
-                    <show_in_default>1</show_in_default>
-                    <show_in_website>1</show_in_website>
-                    <show_in_store>1</show_in_store>
                     <depends>
                         <field id="window_theme">simple</field>
                         <field id="type_config">adv</field>
                     </depends>
-                </concierge_name>
-                <concierge_title translate="label comment">
+                </field>
+                <field id="concierge_title" translate="label comment" type="text" sortOrder="170" showInDefault="1" showInStore="1" showInWebsite="1">
                     <label>Byline</label>
-                    <frontend_type>text</frontend_type>
-                    <sort_order>150</sort_order>
                     <comment>Write a short message to pique your visitors' interest.</comment>
-                    <show_in_default>1</show_in_default>
-                    <show_in_website>1</show_in_website>
-                    <show_in_store>1</show_in_store>
                     <depends>
                         <field id="window_theme">simple</field>
                         <field id="type_config">adv</field>
                     </depends>
-                </concierge_title>
-                <concierge_avatar translate="label comment">
+                </field>
+                <field id="concierge_avatar" translate="label comment" type="image" sortOrder="180" showInDefault="1" showInStore="1" showInWebsite="1">
                     <label>Avatar</label>
-                    <frontend_type>image</frontend_type>
-                    <backend_model>adminhtml/system_config_backend_image</backend_model>
+                    <backend_model>Magento\Config\Model\Config\Backend\Image</backend_model>
                     <upload_dir config="system/filesystem/media" scope_info="1">chat</upload_dir>
                     <base_url type="media" scope_info="1">chat</base_url>
-                    <sort_order>160</sort_order>
                     <comment>Recommended dimensions 50x50px. Set the concierge’s avatar. Appears in greeting and status messages. Allowed file types: jpeg, gif, png</comment>
-                    <show_in_default>1</show_in_default>
-                    <show_in_website>1</show_in_website>
-                    <show_in_store>1</show_in_store>
                     <depends>
                         <field id="window_theme">simple</field>
                         <field id="type_config">adv</field>
                     </depends>
-                </concierge_avatar>
+                </field>
 
                 <!-- Minimized Chat Button -->
 
-                <message_chat_bar translate="label">
+                <field id="message_chat_bar" translate="label" sortOrder="190" showInDefault="1" showInStore="1" showInWebsite="1">
                     <label>Minimized Chat Button</label>
-                    <sort_order>200</sort_order>
-                    <frontend_model>chat/adminhtml_config_source_heading</frontend_model>
-                    <show_in_default>1</show_in_default>
-                    <show_in_website>1</show_in_website>
-                    <show_in_store>1</show_in_store>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
                     <depends>
                         <field id="type_config">adv</field>
                     </depends>
-                </message_chat_bar>
-                <online_message translate="label">
+                </field>
+                <field id="online_message" translate="label" type="text" sortOrder="200" showInDefault="1" showInStore="1" showInWebsite="1">
                     <label>Online Message</label>
-                    <frontend_type>text</frontend_type>
-                    <sort_order>210</sort_order>
-                    <show_in_default>1</show_in_default>
-                    <show_in_website>1</show_in_website>
-                    <show_in_store>1</show_in_store>
                     <depends>
                         <field id="type_config">adv</field>
                     </depends>
-                </online_message>
-                <offline_message translate="label">
+                </field>
+                <field id="offline_message" translate="label" type="text" sortOrder="210" showInDefault="1" showInStore="1" showInWebsite="1">
                     <label>Offline Message</label>
-                    <frontend_type>text</frontend_type>
-                    <sort_order>220</sort_order>
-                    <show_in_default>1</show_in_default>
-                    <show_in_website>1</show_in_website>
-                    <show_in_store>1</show_in_store>
                     <depends>
                         <field id="type_config">adv</field>
                     </depends>
-                </offline_message>
+                </field>
 
                 <!-- Bubble Config -->
 
-                <bubble_config translate="label">
+                <field id="bubble_config" translate="label" type="text" sortOrder="220" showInDefault="1" showInStore="1" showInWebsite="1">
                     <label>Chat Bubble</label>
-                    <frontend_model>chat/adminhtml_config_source_heading</frontend_model>
-                    <sort_order>400</sort_order>
-                    <show_in_default>1</show_in_default>
-                    <show_in_website>1</show_in_website>
-                    <show_in_store>1</show_in_store>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
                     <depends>
-                        <window_theme>classic</window_theme>
+                        <field id="window_theme">classic</field>
                         <field id="type_config">adv</field>
                     </depends>
-                </bubble_config>
-                <theme_bubble_color_primary translate="label">
+                </field>
+                <field id="theme_bubble_color_primary" translate="label" type="select" sortOrder="230" showInDefault="1" showInStore="1" showInWebsite="1">
                     <label>Bubble Color</label>
-                    <frontend_type>select</frontend_type>
-                    <source_model>chat/config_source_bubblecolor</source_model>
-                    <sort_order>403</sort_order>
-                    <show_in_default>1</show_in_default>
-                    <show_in_website>1</show_in_website>
-                    <show_in_store>1</show_in_store>
+                    <source_model>Diglin\Zopim\Model\Config\Source\Bubblecolor</source_model>
                     <depends>
-                        <window_theme>classic</window_theme>
+                        <field id="window_theme">classic</field>
                         <field id="type_config">adv</field>
                     </depends>
-                </theme_bubble_color_primary>
-                <theme_bubble_color translate="label comment">
+                </field>
+                <field id="theme_bubble_color" translate="label comment" type="text" sortOrder="240" showInDefault="1" showInStore="1" showInWebsite="1">
                     <label>Customized Bubble Color</label>
-                    <frontend_type>text</frontend_type>
                     <validate>color</validate>
-                    <sort_order>405</sort_order>
                     <comment><![CDATA[Color in hexadecimal format (‘AABBCC’)]]></comment>
-                    <show_in_default>1</show_in_default>
-                    <show_in_website>1</show_in_website>
-                    <show_in_store>1</show_in_store>
                     <depends>
-                        <window_theme>classic</window_theme>
+                        <field id="window_theme">classic</field>
                         <field id="type_config">adv</field>
-                        <theme_bubble_color_primary>bubble_color_customized</theme_bubble_color_primary>
+                        <field id="theme_bubble_color_primary">bubble_color_customized</field>
                     </depends>
-                </theme_bubble_color>
-                <bubble_show translate="label comment">
+                </field>
+                <field id="bubble_show" translate="label comment" type="select" sortOrder="250" showInDefault="1" showInStore="1" showInWebsite="1">
                     <label>Show the Bubble</label>
-                    <frontend_type>select</frontend_type>
-                    <source_model>chat/config_source_showhide</source_model>
-                    <sort_order>410</sort_order>
+                    <source_model>Diglin\Zopim\Model\Config\Source\Showhide</source_model>
                     <comment><![CDATA[Show: If the user hides or has hidden the chat bubble, it will remain hidden on subsequent page loads until the current session expires, or the reset API function is called.]]></comment>
-                    <show_in_default>1</show_in_default>
-                    <show_in_website>1</show_in_website>
-                    <show_in_store>1</show_in_store>
                     <depends>
-                        <window_theme>classic</window_theme>
+                        <field id="window_theme">classic</field>
                         <field id="type_config">adv</field>
                     </depends>
-                </bubble_show>
-                <bubble_title translate="label">
+                </field>
+                <field id="bubble_title" translate="label" type="text" sortOrder="260" showInDefault="1" showInStore="1" showInWebsite="1">
                     <label>Title</label>
-                    <frontend_type>text</frontend_type>
-                    <sort_order>420</sort_order>
-                    <show_in_default>1</show_in_default>
-                    <show_in_website>1</show_in_website>
-                    <show_in_store>1</show_in_store>
                     <depends>
-                        <window_theme>classic</window_theme>
+                        <field id="window_theme">classic</field>
                         <field id="type_config">adv</field>
                     </depends>
-                </bubble_title>
-                <bubble_text translate="label">
+                </field>
+                <field id="bubble_text" translate="label" type="text" sortOrder="270" showInDefault="1" showInStore="1" showInWebsite="1">
                     <label>Text</label>
-                    <frontend_type>text</frontend_type>
-                    <sort_order>430</sort_order>
-                    <show_in_default>1</show_in_default>
-                    <show_in_website>1</show_in_website>
-                    <show_in_store>1</show_in_store>
                     <depends>
-                        <window_theme>classic</window_theme>
+                        <field id="window_theme">classic</field>
                         <field id="type_config">adv</field>
                     </depends>
-                </bubble_text>
+                </field>
 
                 <!-- Cookie Law Config -->
 
-                <cookielaw_config translate="label">
+                <field id="cookielaw_config" translate="label" sortOrder="280" showInDefault="1" showInStore="1" showInWebsite="1">
                     <label>Cookie Law Configuration</label>
-                    <frontend_model>chat/adminhtml_config_source_heading</frontend_model>
-                    <sort_order>500</sort_order>
-                    <show_in_default>1</show_in_default>
-                    <show_in_website>1</show_in_website>
-                    <show_in_store>1</show_in_store>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
                     <depends>
                         <field id="type_config">adv</field>
                     </depends>
-                </cookielaw_config>
-                <cookielaw_comply translate="label comment">
+                </field>
+                <field id="cookielaw_comply" translate="label comment" type="select" sortOrder="290" showInDefault="1" showInStore="1" showInWebsite="1">
                     <label>Cookie Comply</label>
-                    <frontend_type>select</frontend_type>
-                    <source_model>adminhtml/system_config_source_yesno</source_model>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                     <comment>Display a notice that cookies are used the first time the visitor opens the chat window. Visitors can choose to allow or disallow cookies from the Options menu only when this function is called.</comment>
-                    <sort_order>510</sort_order>
-                    <show_in_default>1</show_in_default>
-                    <show_in_website>1</show_in_website>
-                    <show_in_store>1</show_in_store>
                     <depends>
                         <field id="type_config">adv</field>
                     </depends>
-                </cookielaw_comply>
-                <cookielaw_consent translate="label comment">
+                </field>
+                <field id="cookielaw_consent" translate="label comment" type="select" sortOrder="300" showInDefault="1" showInStore="1" showInWebsite="1">
                     <label>Cookie Implicit Consent</label>
-                    <frontend_type>select</frontend_type>
-                    <source_model>adminhtml/system_config_source_yesno</source_model>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                     <comment>Disable the live chat widget and do not store cookies until the visitor explicitly allows the use of cookies.</comment>
-                    <sort_order>520</sort_order>
-                    <show_in_default>1</show_in_default>
-                    <show_in_website>1</show_in_website>
-                    <show_in_store>1</show_in_store>
                     <depends>
-                        <cookielaw_comply>1</cookielaw_comply>
+                        <field id="cookielaw_comply">1</field>
                         <field id="type_config">adv</field>
                     </depends>
-                </cookielaw_consent>
+                </field>
+            </group>
+            <group id="departments" translate="label comment" sortOrder="30" showInDefault="1" showInStore="1" showInWebsite="1">
+                <label>Departments</label>
+                <field id="filter" type="text" translate="label comment" sortOrder="20" showInDefault="1" showInStore="1" showInWebsite="1">
+                    <label>Filter</label>
+                    <comment><![CDATA[Shows only defined departments. e.g. => marketing,support,sales - Display only the specified departments in the pre-chat form. All other departments will be hidden regardless of their status.]]></comment>
+                </field>
             </group>
         </section>
     </system>

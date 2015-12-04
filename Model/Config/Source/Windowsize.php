@@ -18,10 +18,10 @@
 namespace Diglin\Zopim\Model\Config\Source;
 
 /**
- * Class WindowSize
+ * Class Windowsize
  * @package Diglin\Zopim\Model\Config\Source
  */
-class WindowSize implements \Magento\Framework\Option\ArrayInterface
+class Windowsize implements \Magento\Framework\Option\ArrayInterface
 {
     /**
      * Options getter
