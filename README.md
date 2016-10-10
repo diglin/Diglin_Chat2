@@ -23,7 +23,7 @@ Magento 2 Module Diglin\Zopim implements integration with the Zopim Chat Widget.
 
 ```
 cd path/to/my/magento/project
-bin/magento module:uninstall -r Diglin_Chat
+bin/magento module:uninstall -r Diglin_Zopim
 ```
 
 ## Author
