@@ -4,7 +4,7 @@
  *
  * @author      Sylvain Rayé <support at diglin.com>
  * @category    Diglin
- * @package     Indianershop_Base
+ * @package     Diglin_Zopim
  * @copyright   Copyright (c) 2011-2015 Diglin (http://www.diglin.com)
  */
 
