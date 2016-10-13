@@ -6,13 +6,13 @@
  * @author      Sylvain Rayé <support at diglin.com>
  * @category    Diglin
  * @package     Diglin_Zopim
- * @copyright   Copyright (c) 2011-2015 Diglin (http://www.diglin.com)
+ * @copyright   Copyright (c) 2011-2016 Diglin (http://www.diglin.com)
  */
 -->
-<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceContainer name="before.body.end">
-            <block class="Magento\Framework\View\Element\Template" name="zopim.chat.js" as="zopim_chat_js" template="Diglin_Zopim::chat/widget.phtml" after="-" />
+            <block class="Diglin\Zopim\Block\Display" name="zopim.chat.js" as="zopim_chat_js" template="Diglin_Zopim::chat/widget.phtml" after="-" cacheable="false" />
         </referenceContainer>
     </body>
 </page>

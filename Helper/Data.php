@@ -5,12 +5,13 @@
  * @author      Sylvain Rayé <support at diglin.com>
  * @category    Diglin
  * @package     Diglin_Zopim
- * @copyright   Copyright (c) 2011-2015 Diglin (http://www.diglin.com)
+ * @copyright   Copyright (c) 2011-2016 Diglin (http://www.diglin.com)
  */
 
 namespace Diglin\Zopim\Helper;
 
 use Magento\Framework\HTTP\Client\Curl;
+use Magento\Store\Model\ScopeInterface;
 
 /**
  * Class Data
@@ -23,6 +24,50 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     const ZOPIM_SIGNUP_URL = 'https://www.zopim.com/plugins/createTrialAccount';
     const ZOPIM_GETACCOUNTDETAILS_URL = 'https://www.zopim.com/plugins/getAccountDetails';
     const ZOPIM_DASHBOARD_URL = 'https://dashboard.zopim.com';
+
+    const CFG_CHATCONFIG_ENABLED         = 'zopim/chatconfig/enabled';
+    const CFG_CHATCONFIG_ALLOW_NAME      = 'zopim/chatconfig/allow_name';
+    const CFG_CHATCONFIG_ALLOW_EMAIL     = 'zopim/chatconfig/allow_email';
+    const CFG_CHATCONFIG_LANGUAGE        = 'zopim/chatconfig/language';
+    const CFG_CHATCONFIG_KEY             = 'zopim/chatconfig/key';
+    const CFG_CHATCONFIG_DISABLE_SOUND   = 'zopim/widgetconfig/disable_sound';
+    const CFG_CHATCONFIG_ONLINE_MESSAGE  = 'zopim/widgetconfig/online_message';
+    const CFG_CHATCONFIG_OFFLINE_MESSAGE = 'zopim/widgetconfig/offline_message';
+
+    const CFG_WIDGETCONFIG_TYPE            = 'zopim/widgetconfig/type_config';
+    const CFG_WIDGETCONFIG_WINDOW_THEME    = 'zopim/widgetconfig/window_theme';
+    const CFG_WIDGETCONFIG_WINDOW_TITLE    = 'zopim/widgetconfig/window_title';
+    const CFG_WIDGETCONFIG_WINDOW_SIZE     = 'zopim/widgetconfig/window_size';
+    const CFG_WIDGETCONFIG_WINDOW_ONSHOW   = 'zopim/widgetconfig/window_onshow';
+    const CFG_WIDGETCONFIG_WINDOW_ONHIDE   = 'zopim/widgetconfig/window_onhide';
+    const CFG_WIDGETCONFIG_WINDOW_POSITION = 'zopim/widgetconfig/button_position';
+    const CFG_WIDGETCONFIG_WINDOW_POSITION_MOBILE = 'zopim/widgetconfig/button_position_mobile';
+
+    const CFG_WIDGETCONFIG_BUBBLE_SHOW          = 'zopim/widgetconfig/bubble_show';
+    const CFG_WIDGETCONFIG_BUBBLE_TITLE         = 'zopim/widgetconfig/bubble_title';
+    const CFG_WIDGETCONFIG_BUBBLE_TEXT          = 'zopim/widgetconfig/bubble_text';
+    const CFG_WIDGETCONFIG_BUBBLE_COLOR_PRIMARY = 'zopim/widgetconfig/theme_bubble_color_primary';
+    const CFG_WIDGETCONFIG_BUBBLE_COLOR         = 'zopim/widgetconfig/theme_bubble_color';
+    const CFG_WIDGETCONFIG_BUTTON_HIDE_OFFLINE  = 'zopim/widgetconfig/button_hide_offline';
+
+    const CFG_DEPARTMENTS_FILTER            = 'zopim/departments/filter';
+
+    const CFG_WIDGETCONFIG_COOKIE_COMPLY    = 'zopim/widgetconfig/cookielaw_comply';
+    const CFG_WIDGETCONFIG_COOKIE_CONSENT   = 'zopim/widgetconfig/cookielaw_consent';
+    const CFG_WIDGETCONFIG_CONCIERGE_AVATAR = 'zopim/widgetconfig/concierge_avatar';
+    const CFG_WIDGETCONFIG_CONCIERGE_NAME   = 'zopim/widgetconfig/concierge_name';
+    const CFG_WIDGETCONFIG_CONCIERGE_TITLE  = 'zopim/widgetconfig/concierge_title';
+
+    const CFG_WIDGETCONFIG_BADGE_SHOW       = 'zopim/widgetconfig/badge_show';
+    const CFG_WIDGETCONFIG_BADGE_LAYOUT     = 'zopim/widgetconfig/badge_layout';
+    const CFG_WIDGETCONFIG_BADGE_IMAGE      = 'zopim/widgetconfig/badge_image';
+    const CFG_WIDGETCONFIG_BADGE_TEXT       = 'zopim/widgetconfig/badge_text';
+    const CFG_WIDGETCONFIG_BADGE_COLOR_PRIMARY       = 'zopim/widgetconfig/theme_badge_color_primary';
+    const CFG_WIDGETCONFIG_BADGE_COLOR      = 'zopim/widgetconfig/theme_badge_color';
+
+    const CFG_WIDGETCONFIG_THEME_COLOR_PRIMARY       = 'zopim/widgetconfig/theme_primary_color';
+
+    const MEDIA_PATH = 'chat';
 
     /**
      * @return mixed|string
@@ -95,7 +140,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      */
     public function allowName()
     {
-        return $this->scopeConfig->isSetFlag('chat/chatconfig/allow_name');
+        return $this->scopeConfig->isSetFlag(self::CFG_CHATCONFIG_ALLOW_NAME, ScopeInterface::SCOPE_STORE);
     }
 
     /**
@@ -103,7 +148,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      */
     public function allowEmail()
     {
-        return $this->scopeConfig->isSetFlag('chat/chatconfig/allow_email');
+        return $this->scopeConfig->isSetFlag(self::CFG_CHATCONFIG_ALLOW_EMAIL, ScopeInterface::SCOPE_STORE);
     }
 
     /**
@@ -111,7 +156,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      */
     public function getEnabled()
     {
-        return $this->scopeConfig->isSetFlag('chat/chatconfig/enabled');
+        return $this->scopeConfig->isSetFlag(self::CFG_CHATCONFIG_ENABLED, ScopeInterface::SCOPE_STORE);
     }
 
     /**
@@ -119,7 +164,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      */
     public function getLanguage()
     {
-        return $this->scopeConfig->getValue('chat/chatconfig/language');
+        return $this->scopeConfig->getValue(self::CFG_CHATCONFIG_LANGUAGE, ScopeInterface::SCOPE_STORE);
     }
 
     /**
@@ -127,7 +172,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      */
     public function getKey()
     {
-        return $this->scopeConfig->getValue('chat/chatconfig/key');
+        return $this->scopeConfig->getValue(self::CFG_CHATCONFIG_KEY, ScopeInterface::SCOPE_STORE);
     }
 
     /**
@@ -135,7 +180,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      */
     public function getDisableSound()
     {
-        return $this->scopeConfig->getValue('chat/widgetconfig/disable_sound');
+        return $this->scopeConfig->getValue(self::CFG_CHATCONFIG_DISABLE_SOUND, ScopeInterface::SCOPE_STORE);
     }
 
     /* Greetings Config */
@@ -145,7 +190,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      */
     public function getOnlineMessage()
     {
-        return $this->scopeConfig->getValue('chat/widgetconfig/online_message');
+        return $this->scopeConfig->getValue(self::CFG_CHATCONFIG_ONLINE_MESSAGE, ScopeInterface::SCOPE_STORE);
     }
 
     /**
@@ -153,7 +198,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      */
     public function getOfflineMessage()
     {
-        return $this->scopeConfig->getValue('chat/widgetconfig/offline_message');
+        return $this->scopeConfig->getValue(self::CFG_CHATCONFIG_OFFLINE_MESSAGE, ScopeInterface::SCOPE_STORE);
     }
 
     /* Widget Config */
@@ -165,7 +210,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      */
     public function getConfigType()
     {
-        return $this->scopeConfig->getValue('chat/widgetconfig/type_config');
+        return $this->scopeConfig->getValue(self::CFG_WIDGETCONFIG_TYPE, ScopeInterface::SCOPE_STORE);
     }
 
     /**
@@ -175,7 +220,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      */
     public function getWindowTheme()
     {
-        return $this->scopeConfig->getValue('chat/widgetconfig/window_theme');
+        return $this->scopeConfig->getValue(self::CFG_WIDGETCONFIG_WINDOW_THEME, ScopeInterface::SCOPE_STORE);
     }
 
     /* Bubble Config */
@@ -185,7 +230,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      */
     public function getBubbleShow()
     {
-        return $this->scopeConfig->getValue('chat/widgetconfig/bubble_show');
+        return $this->scopeConfig->getValue(self::CFG_WIDGETCONFIG_BUBBLE_SHOW, ScopeInterface::SCOPE_STORE);
     }
 
     /**
@@ -193,7 +238,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      */
     public function getBubbleTitle()
     {
-        return $this->scopeConfig->getValue('chat/widgetconfig/bubble_title');
+        return $this->scopeConfig->getValue(self::CFG_WIDGETCONFIG_BUBBLE_TITLE, ScopeInterface::SCOPE_STORE);
     }
 
     /**
@@ -201,7 +246,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      */
     public function getBubbleText()
     {
-        return $this->scopeConfig->getValue('chat/widgetconfig/bubble_text');
+        return $this->scopeConfig->getValue(self::CFG_WIDGETCONFIG_BUBBLE_TEXT, ScopeInterface::SCOPE_STORE);
     }
 
     /**
@@ -209,7 +254,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      */
     public function getBubbleColorPrimary()
     {
-        return $this->scopeConfig->getValue('chat/widgetconfig/theme_bubble_color_primary');
+        return $this->scopeConfig->getValue(self::CFG_WIDGETCONFIG_BUBBLE_COLOR_PRIMARY, ScopeInterface::SCOPE_STORE);
     }
 
     /**
@@ -217,7 +262,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      */
     public function getBubbleColor()
     {
-        return $this->scopeConfig->getValue('chat/widgetconfig/theme_bubble_color');
+        return $this->scopeConfig->getValue(self::CFG_WIDGETCONFIG_BUBBLE_COLOR, ScopeInterface::SCOPE_STORE);
     }
 
     /* Window Config */
@@ -227,7 +272,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      */
     public function getWindowTitle()
     {
-        return $this->scopeConfig->getValue('chat/widgetconfig/window_title');
+        return $this->scopeConfig->getValue(self::CFG_WIDGETCONFIG_WINDOW_TITLE, ScopeInterface::SCOPE_STORE);
     }
 
     /**
@@ -244,7 +289,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      */
     public function getWindowSize()
     {
-        return $this->scopeConfig->getValue('chat/widgetconfig/window_size');
+        return $this->scopeConfig->getValue(self::CFG_WIDGETCONFIG_WINDOW_SIZE, ScopeInterface::SCOPE_STORE);
     }
 
     /**
@@ -252,7 +297,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      */
     public function getWindowOnShow()
     {
-        return $this->scopeConfig->getValue('chat/widgetconfig/window_onshow');
+        return $this->scopeConfig->getValue(self::CFG_WIDGETCONFIG_WINDOW_ONSHOW, ScopeInterface::SCOPE_STORE);
     }
 
     /**
@@ -260,7 +305,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      */
     public function getWindowOnHide()
     {
-        return $this->scopeConfig->getValue('chat/widgetconfig/window_onhide');
+        return $this->scopeConfig->getValue(self::CFG_WIDGETCONFIG_WINDOW_ONHIDE, ScopeInterface::SCOPE_STORE);
     }
 
     /* Button Config */
@@ -270,7 +315,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      */
     public function getButtonPosition()
     {
-        return $this->scopeConfig->getValue('chat/widgetconfig/button_position');
+        return $this->scopeConfig->getValue(self::CFG_WIDGETCONFIG_WINDOW_POSITION, ScopeInterface::SCOPE_STORE);
     }
 
     /**
@@ -278,7 +323,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      */
     public function getButtonPositionMobile()
     {
-        return $this->scopeConfig->getValue('chat/widgetconfig/button_position_mobile');
+        return $this->scopeConfig->getValue(self::CFG_WIDGETCONFIG_WINDOW_POSITION_MOBILE, ScopeInterface::SCOPE_STORE);
     }
 
     /**
@@ -286,7 +331,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      */
     public function getButtonHideOffline()
     {
-        return $this->scopeConfig->getValue('chat/widgetconfig/button_hide_offline');
+        return $this->scopeConfig->getValue(self::CFG_WIDGETCONFIG_BUTTON_HIDE_OFFLINE, ScopeInterface::SCOPE_STORE);
     }
 
     /* Department Config */
@@ -296,7 +341,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      */
     public function getDepartmentsFilter()
     {
-        return $this->scopeConfig->getValue('chat/departments/filter');
+        return $this->scopeConfig->getValue(self::CFG_DEPARTMENTS_FILTER, ScopeInterface::SCOPE_STORE);
     }
 
     /* Cookie Law Config */
@@ -306,7 +351,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      */
     public function getCookieLawComply()
     {
-        return $this->scopeConfig->isSetFlag('chat/widgetconfig/cookielaw_comply');
+        return $this->scopeConfig->isSetFlag(self::CFG_WIDGETCONFIG_COOKIE_COMPLY, ScopeInterface::SCOPE_STORE);
     }
 
     /**
@@ -314,7 +359,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      */
     public function getCookieLawConsent()
     {
-        return $this->scopeConfig->isSetFlag('chat/widgetconfig/cookielaw_consent');
+        return $this->scopeConfig->isSetFlag(self::CFG_WIDGETCONFIG_COOKIE_CONSENT, ScopeInterface::SCOPE_STORE);
     }
 
     /* Concierge Config */
@@ -324,7 +369,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      */
     public function getConciergeAvatar()
     {
-        return $this->scopeConfig->getValue('chat/widgetconfig/concierge_avatar');
+        return $this->scopeConfig->getValue(self::CFG_WIDGETCONFIG_CONCIERGE_AVATAR, ScopeInterface::SCOPE_STORE);
     }
 
     /**
@@ -332,7 +377,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      */
     public function getConciergeName()
     {
-        return $this->scopeConfig->getValue('chat/widgetconfig/concierge_name');
+        return $this->scopeConfig->getValue(self::CFG_WIDGETCONFIG_CONCIERGE_NAME, ScopeInterface::SCOPE_STORE);
     }
 
     /**
@@ -340,7 +385,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      */
     public function getConciergeTitle()
     {
-        return $this->scopeConfig->getValue('chat/widgetconfig/concierge_title');
+        return $this->scopeConfig->getValue(self::CFG_WIDGETCONFIG_CONCIERGE_TITLE, ScopeInterface::SCOPE_STORE);
     }
 
     /* Badge Config */
@@ -350,7 +395,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      */
     public function getBadgeShow()
     {
-        return $this->scopeConfig->getValue('chat/widgetconfig/badge_show');
+        return $this->scopeConfig->getValue(self::CFG_WIDGETCONFIG_BADGE_SHOW, ScopeInterface::SCOPE_STORE);
     }
 
     /**
@@ -358,7 +403,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      */
     public function getBadgeLayout()
     {
-        return $this->scopeConfig->getValue('chat/widgetconfig/badge_layout');
+        return $this->scopeConfig->getValue(self::CFG_WIDGETCONFIG_BADGE_LAYOUT, ScopeInterface::SCOPE_STORE);
     }
 
     /**
@@ -366,7 +411,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      */
     public function getBadgeImage()
     {
-        return $this->scopeConfig->getValue('chat/widgetconfig/badge_image');
+        return $this->scopeConfig->getValue(self::CFG_WIDGETCONFIG_BADGE_IMAGE, ScopeInterface::SCOPE_STORE);
     }
 
     /**
@@ -374,7 +419,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      */
     public function getBadgeText()
     {
-        return $this->scopeConfig->getValue('chat/widgetconfig/badge_text');
+        return $this->scopeConfig->getValue(self::CFG_WIDGETCONFIG_BADGE_TEXT, ScopeInterface::SCOPE_STORE);
     }
 
     /**
@@ -382,7 +427,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      */
     public function getBadgeColorPrimary()
     {
-        return $this->scopeConfig->getValue('chat/widgetconfig/theme_badge_color_primary');
+        return $this->scopeConfig->getValue(self::CFG_WIDGETCONFIG_BADGE_COLOR_PRIMARY, ScopeInterface::SCOPE_STORE);
     }
 
     /**
@@ -390,7 +435,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      */
     public function getBadgeColor()
     {
-        return $this->scopeConfig->getValue('chat/widgetconfig/theme_badge_color');
+        return $this->scopeConfig->getValue(self::CFG_WIDGETCONFIG_BADGE_COLOR, ScopeInterface::SCOPE_STORE);
     }
 
     /* Theme Config */
@@ -400,6 +445,14 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      */
     public function getThemePrimaryColor()
     {
-        return $this->scopeConfig->getValue('chat/widgetconfig/theme_primary_color');
+        return $this->scopeConfig->getValue(self::CFG_WIDGETCONFIG_THEME_COLOR_PRIMARY, ScopeInterface::SCOPE_STORE);
+    }
+
+    /**
+     * @return string
+     */
+    public function getBaseMediaPath()
+    {
+        return self::MEDIA_PATH;
     }
 }

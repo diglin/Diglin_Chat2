@@ -15,24 +15,16 @@
  * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
-namespace Diglin\Zopim\Model\Config\Source;
+namespace Diglin\Zopim\Controller\Adminhtml;
 
 /**
- * Class Badgecolor
- * @package Diglin\Zopim\Model\Config\Source
+ * Class Chat
+ * @package Diglin\Zopim\Controller\Adminhtml
  */
-class Badgecolor implements \Magento\Framework\Option\ArrayInterface
+abstract class Chat extends \Magento\Backend\App\Action
 {
-    /**
-     * Options getter
-     *
-     * @return array
-     */
-    public function toOptionArray()
+    protected function _isAllowed()
     {
-        return [
-            ['value' => 'badge_color_primary', 'label' => __('Use primary color')],
-            ['value' => 'badge_color_customized', 'label' => __('Use custom color')],
-        ];
+        return $this->_authorization->isAllowed('Diglin_Zopim::chat');
     }
 }

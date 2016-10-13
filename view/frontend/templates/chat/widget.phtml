@@ -5,12 +5,22 @@
  * @author      Sylvain Rayé <support at diglin.com>
  * @category    Diglin
  * @package     Diglin_Zopim
- * @copyright   Copyright (c) 2011-2015 Diglin (http://www.diglin.com)
+ * @copyright   Copyright (c) 2011-2016 Diglin (http://www.diglin.com)
  */
 
 // @codingStandardsIgnoreFile
 
+/* @var $this \Diglin\Zopim\Block\Display */
 ?>
-<script>
-    alert('zopim');
+<?php if ($this->getKey()): ?>
+<!--Start of Zopim Live Chat Script by Diglin GmbH-->
+<script type="text/javascript">
+window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
+d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
+_.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute('charset','utf-8');
+$.src='//v2.zopim.com/?<?php echo $this->getKey() ?>';z.t=+new Date;$.
+type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
 </script>
+<script><?php echo ($this->getZopimOptions()) ? '$zopim(function(){' . "\n" . $this->getZopimOptions() . '});' . "\n" : ''; ?></script>
+<!--End of Zopim Live Chat Script by Diglin GmbH-->
+<?php else: ?><!-- Zopim Widget by Diglin GmbH is missing because the zopim key is not defined --><?php endif ?>

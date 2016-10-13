@@ -9,11 +9,13 @@
     <acl>
         <resources>
             <resource id="Magento_Backend::admin">
-                <resource id="Magento_Backend::stores">
-                    <resource id="Diglin_Zopim::zopim" title="Zopim Chat by Diglin" sortOrder="50">
+                <resource id="Magento_Backend::system">
+                    <resource id="Diglin_Zopim::zopim" title="Zopim Chat by Diglin GmbH" sortOrder="50">
                         <resource id="Diglin_Zopim::account_setup" title="Account Setup" sortOrder="10" />
                         <resource id="Diglin_Zopim::config" title="Configuration" sortOrder="20" />
                     </resource>
+                </resource>
+                <resource id="Magento_Backend::stores">
                     <resource id="Magento_Backend::stores_settings">
                         <resource id="Magento_Config::config">
                             <resource id="Diglin_Zopim::config_zopim" title="Zopim Section" sortOrder="50" />
