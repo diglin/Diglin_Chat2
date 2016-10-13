@@ -4,7 +4,7 @@
  *
  * @author      Sylvain Rayé <support at diglin.com>
  * @category    Diglin
- * @package     Diglin_
+ * @package     Diglin_Zopim
  * @copyright   Copyright (c) 2011-2016 Diglin (http://www.diglin.com)
  */
 
@@ -15,12 +15,7 @@ class Context extends \Magento\Framework\View\Element\Template\Context
     /**
      * @var \Diglin\Zopim\Helper\Data
      */
-    protected $chatHelper;
-
-    /**
-     * @var \Magento\Framework\Locale\ResolverInterface
-     */
-    protected $localeResolver;
+    protected $_chatHelper;
 
     public function __construct(
         \Magento\Framework\App\RequestInterface $request,
@@ -48,12 +43,10 @@ class Context extends \Magento\Framework\View\Element\Template\Context
         \Magento\Framework\View\Page\Config $pageConfig,
         \Magento\Framework\View\Element\Template\File\Resolver $resolver,
         \Magento\Framework\View\Element\Template\File\Validator $validator,
-        \Diglin\Zopim\Helper\Data $dataHelper,
-        \Magento\Framework\Locale\ResolverInterface $localeResolver
+        \Diglin\Zopim\Helper\Data $dataHelper
     ) {
 
-        $this->chatHelper = $dataHelper;
-        $this->localeResolver = $localeResolver;
+        $this->_chatHelper = $dataHelper;
 
         parent::__construct(
             $request,
@@ -89,14 +82,6 @@ class Context extends \Magento\Framework\View\Element\Template\Context
      */
     public function getChatHelper()
     {
-        return $this->chatHelper;
-    }
-
-    /**
-     * @return \Magento\Framework\Locale\ResolverInterface
-     */
-    public function getLocaleResolver()
-    {
-        return $this->localeResolver;
+        return $this->_chatHelper;
     }
 }
